@@ -1,0 +1,22 @@
+.chat-button {
+	border: none;
+	position: relative;
+	border-radius: 50%;
+	background-color: rgb(85, 85, 85);
+	transition: transform 100ms ease-in-out 0s;
+	min-width: 60px;
+	min-height: 60px;
+
+	&:hover {
+		cursor: pointer;
+		box-shadow: rgba(0, 0, 0, 0.1) 0 2px 6px, rgba(0, 0, 0, 0.2) 0 4px 16px;
+		transform: scale(1.1);
+}
+
+	&__icon {
+		width: 30px;
+		background-color: white;
+		-webkit-mask-image: url(../../../assets/chat-icon.svg);
+		mask-image: url(../../../assets/chat-icon.svg);
+}
+}

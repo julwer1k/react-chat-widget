@@ -1,0 +1,39 @@
+.message-content {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	font-family: Helvetica, Arial, sans-serif;
+	margin-left: 32px;
+	padding: 8px 18px;
+	flex: 1 1 auto;
+}
+
+.answers-content {
+	display: flex;
+	align-items: center;
+
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.answer-button {
+	box-sizing: border-box;
+	font-family: inherit;
+	padding: 8px 16px;
+	font-size: 12px;
+	flex-shrink: 0;
+	border-radius: 3px;
+	line-height: 16px;
+	outline: none;
+	transition: background-color 150ms ease-out 0s;
+	border-style: solid;
+	border-width: 1px;
+	cursor: pointer;
+	text-align: center;
+	word-break: normal;
+	overflow-wrap: break-word;
+	background-color: transparent;
+	border-color: rgb(85, 85, 85);
+	color: rgb(85, 85, 85);
+}
