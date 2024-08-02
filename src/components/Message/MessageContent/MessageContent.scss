@@ -1,3 +1,8 @@
+.ScrollbarsCustom-Content {
+	display: flex;
+	flex-direction: column;
+}
+
 .message-content {
 	position: relative;
 	display: flex;
@@ -5,8 +10,8 @@
 	gap: 10px;
 	font-family: Helvetica, Arial, sans-serif;
 	margin-left: 32px;
-	padding: 8px 18px;
-	flex: 1 1 auto;
+	padding: 8px 18px 30px 18px;
+	flex-grow: 1;
 }
 
 .answers-content {

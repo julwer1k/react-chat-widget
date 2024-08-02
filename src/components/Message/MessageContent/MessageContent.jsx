@@ -1,21 +1,25 @@
 import './MessageContent.scss'
 import { useEffect, useMemo, useState } from 'react'
+import { getSupportMessage } from '../../../utils/getSupportMessage.js'
 import { Loader } from '../../Loader/Loader.jsx'
+import { Answer } from '../Answer/index.js'
 import { Message } from '../Message/index.js'
 
-const answers = [
+const ANSWERS = [
 	{ id: 0, text: 'Який сьогодні день?' },
 	{ id: 1, text: 'Яка зараз година?' },
 	{ id: 2, text: 'Скільки днів до Нового Року?' },
 	{ id: 3, text: 'Своє питання' },
 ]
 
-const initialState = {
+export const IMG_URL = 'https://6939709.fs1.hubspotusercontent-na1.net/hub/6939709/hubfs/Screenshot%202022-05-16%20at%2008.57.55-modified.png?width=108&height=108'
+
+const INITIAL_STATE = {
 	key: 0,
 	person: {
 		role: 'support',
 		name: 'Jayne N',
-		imgUrl: 'https://6939709.fs1.hubspotusercontent-na1.net/hub/6939709/hubfs/Screenshot%202022-05-16%20at%2008.57.55-modified.png?width=108&height=108',
+		imgUrl: IMG_URL,
 		message: [{ id: 0, text: 'Чим я вам можу допомогти?' }],
 		time: new Date().toISOString(),
 	},
@@ -29,6 +33,7 @@ export const MessageContent = () => {
 	const [isLoading, setIsLoading] = useState(true)
 	const [messages, setMessages] = useState([])
 	const [messageId, setMessageId] = useState(0)
+	const [answers, setAnswers] = useState(ANSWERS)
 
 	const isWriteQuestion = useMemo(() => selectAnswer === 3, [selectAnswer])
 
@@ -39,7 +44,7 @@ export const MessageContent = () => {
 					person: {
 						role: 'user',
 						name: 'Jayne N',
-						imgUrl: 'https://6939709.fs1.hubspotusercontent-na1.net/hub/6939709/hubfs/Screenshot%202022-05-16%20at%2008.57.55-modified.png?width=108&height=108',
+						imgUrl: IMG_URL,
 						message: [],
 					},
 					type: 'type-message',
@@ -54,74 +59,23 @@ export const MessageContent = () => {
 		},
 		[inputValue],
 	)
-
 	const selectAnswers = (answerId) => {
+		setAnswers([]);
 
-		const now = new Date()
-		let newMessage
-
-		switch (answerId) {
-			case 0: {
-				const daysOfWeek = ['Неділя', 'Понеділок', 'Вівторок', 'Середа', 'Четвер', 'П\'ятниця', 'Субота']
-				const dayOfWeek = daysOfWeek[now.getDay()]
-
-				newMessage = {
-					key: messageId,
-					person: {
-						role: 'support',
-						name: 'Jayne N',
-						imgUrl: 'https://6939709.fs1.hubspotusercontent-na1.net/hub/6939709/hubfs/Screenshot%202022-05-16%20at%2008.57.55-modified.png?width=108&height=108',
-						message: [{ id: messageId, text: `Сьогодні ${dayOfWeek}` }],
-					},
-					type: 'default-message',
-				}
-				break
-			}
-
-			case 1: {
-				const currentTime = now.toLocaleTimeString()
-
-				newMessage = {
-					key: messageId,
-					person: {
-						role: 'support',
-						name: 'Jayne N',
-						imgUrl: 'https://6939709.fs1.hubspotusercontent-na1.net/hub/6939709/hubfs/Screenshot%202022-05-16%20at%2008.57.55-modified.png?width=108&height=108',
-						message: [{ id: messageId, text: `Зараз ${currentTime}` }],
-					},
-					type: 'default-message',
-				}
-				break
-			}
-
-			case 2: {
-				const newYear = new Date(now.getFullYear() + 1, 0, 1)
-				const daysUntilNewYear = Math.ceil((newYear - now) / (1000 * 60 * 60 * 24))
-
-				newMessage = {
-					key: messageId,
-					person: {
-						role: 'support',
-						name: 'Jayne N',
-						imgUrl: 'https://6939709.fs1.hubspotusercontent-na1.net/hub/6939709/hubfs/Screenshot%202022-05-16%20at%2008.57.55-modified.png?width=108&height=108',
-						message: [{ id: messageId, text: `До Нового Року залишилося ${daysUntilNewYear} днів` }],
-					},
-					type: 'default-message',
-				}
-				break
-			}
-
-			default:
-				break
+		if (answerId === 3) {
+			setMessageId(prev => prev + 1)
+			setSelectAnswer(answerId)
+			return
 		}
 
-		if (answerId !== 3) {
-			console.log(selectAnswer)
+		const newMessage = getSupportMessage(answerId, messageId);
+
+		if (newMessage) {
 			const typingMessage = {
 				person: {
 					role: 'support',
 					name: 'Jayne N',
-					imgUrl: 'https://6939709.fs1.hubspotusercontent-na1.net/hub/6939709/hubfs/Screenshot%202022-05-16%20at%2008.57.55-modified.png?width=108&height=108',
+					imgUrl: IMG_URL,
 					message: [],
 				},
 				type: 'type-message',
@@ -135,10 +89,11 @@ export const MessageContent = () => {
 					return [...prev, newMessage]
 				})
 			}, 400)
-		} else {
-			setMessages([])
-			setMessageId(prev => prev + 1)
 		}
+
+		setTimeout(() => {
+			setAnswers(ANSWERS);
+		}, 1000)
 
 		setSelectAnswer(answerId)
 	}
@@ -146,12 +101,13 @@ export const MessageContent = () => {
 	const handeChangeInput = (event) => {
 		const value = event.target.value
 		setInputValue(value)
+		setAnswers([])
 	}
 
 	useEffect(() => {
 		const fetchMessage = () => {
 			setTimeout(() => {
-				setInitialMessage(initialState)
+				setInitialMessage(INITIAL_STATE)
 				setIsLoading(false)
 			}, 200)
 		}
@@ -172,7 +128,6 @@ export const MessageContent = () => {
 				body: JSON.stringify({ message: userInput }),
 			})
 				.then(() => {
-					console.log('Message sent!');
 				})
 				.catch((error) => {
 					console.error('Error sending message:', error);
@@ -193,7 +148,7 @@ export const MessageContent = () => {
 			person: {
 				role: 'support',
 				name: 'Jayne N',
-				imgUrl: 'https://6939709.fs1.hubspotusercontent-na1.net/hub/6939709/hubfs/Screenshot%202022-05-16%20at%2008.57.55-modified.png?width=108&height=108',
+				imgUrl: IMG_URL,
 				message: [{ id: messageId + 3, text: 'Дякую за вашу відповідь!' }],
 			},
 			type: 'default-message',
@@ -205,6 +160,11 @@ export const MessageContent = () => {
 			setMessages(prev => [...prev, answerMessage])
 		}, 400);
 
+		setTimeout(() => {
+			setAnswers(ANSWERS);
+		}, 1000)
+
+		setSelectAnswer(undefined);
 		setInputValue('');
 	};
 
@@ -220,13 +180,7 @@ export const MessageContent = () => {
 						{selectAnswer === null && (
 							<div className="answers-content">
 								{answers.map(({ id, text }) => (
-									<button
-										key={id}
-										className="answer-button"
-										onClick={() => selectAnswers(id)}
-									>
-										{text}
-									</button>
+									<Answer key={id} id={id} text={text} selectAnswers={selectAnswers} />
 								))}
 							</div>
 						)}
@@ -238,6 +192,14 @@ export const MessageContent = () => {
 								)
 							}
 						})}
+
+						{selectAnswer !== null && (
+							<div className="answers-content">
+								{answers.map(({ id, text }) => (
+									<Answer key={id} id={id} text={text} selectAnswers={selectAnswers} />
+								))}
+							</div>
+						)}
 					</>
 				)}
 			</div>

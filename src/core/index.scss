@@ -1,9 +1,11 @@
-body {
-	background-color: gray;
-}
-
 [class*="__container"] {
 	padding: 0 8px;
 	box-sizing: border-box;
 	max-width: 1146px;
+	margin: 0 auto;
+}
+
+body {
+	margin: 0;
+	padding: 0;
 }

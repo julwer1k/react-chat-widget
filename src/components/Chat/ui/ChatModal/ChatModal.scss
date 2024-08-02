@@ -1,10 +1,10 @@
 .chat-modal {
 	display: flex;
 	flex-direction: column;
-	height: 500px;
 	min-height: 100%;
+	height: 500px;
 	background-color: white;
-	overflow: scroll;
+	overflow: auto;
 	border-radius: 8px;
 	box-shadow: rgba(0, 0, 0, 0.1) 0 4px 16px;
 	position: relative;
@@ -15,11 +15,15 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		position: absolute;
 		transform: translate(-50%);
+		position: absolute;
 		top: 40%;
 		left: 50%;
 	}
+}
+
+.message-content__container {
+	margin: 0;
 }
 
 .navbar-modal {
@@ -28,6 +32,10 @@
 	height: 68px;
 	border-radius: 8px 8px 0 0;
 	background-color: rgb(85, 85, 85);
+
+	&__container {
+		margin: 0;
+	}
 
 	&__content {
 		display: flex;
@@ -52,8 +60,8 @@
 
 	&__arrow {
 		background-color: white;
-		-webkit-mask-image: url(../../../assets/chat/chat-modal-arrow.svg);
-		mask-image: url(../../../assets/chat/chat-modal-arrow.svg);
+		-webkit-mask-image: url('../../../../assets/chat/chat-modal-arrow.svg');
+		mask-image: url('../../../../assets/chat/chat-modal-arrow.svg');
 		vertical-align: middle;
 		color: white;
 		border: none;

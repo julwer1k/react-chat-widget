@@ -2,16 +2,13 @@ import './ChatButton.scss'
 
 import PropTypes from 'prop-types'
 
-export const ChatButton = ({ isShowModal, setIsShowModal }) => {
-	const toggleChatModal = () => {
-		setIsShowModal(!isShowModal);
-	};
+export const ChatButton = ({handleFunction }) => {
 
 	return (
 		<button
 			className="chat-button"
 			aria-label="Open live chat"
-			onClick={toggleChatModal}
+			onClick={handleFunction}
 		>
 			<svg className="chat-button__icon" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
 				<rect fill="none" height="256" width="256" />
@@ -21,7 +18,5 @@ export const ChatButton = ({ isShowModal, setIsShowModal }) => {
 }
 
 ChatButton.propTypes = {
-	isShowModal: PropTypes.bool.isRequired,
-	setIsShowModal: PropTypes.func.isRequired,
+	handleFunction: PropTypes.func.isRequired,
 };
-
