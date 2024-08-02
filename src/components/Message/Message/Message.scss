@@ -1,197 +1,197 @@
 @use "styles/variables";
-@use 'styles/mixins';
+@use "styles/mixins";
 
 .message {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	gap: 4px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 
-	&__name {
-		margin: 0;
-		font-size: 12px;
-		line-height: 18px;
-		color: rgb(124, 152, 182);
-		font-weight: 600;
+  &__name {
+    margin: 0;
+    font-size: 12px;
+    line-height: 18px;
+    color: rgb(124, 152, 182);
+    font-weight: 600;
 
-		&--user {
-			display: none;
-		}
-	}
+    &--user {
+      display: none;
+    }
+  }
 
-	&__avatar {
-		position: absolute;
-		left: -8%;
-		top: 10px;
-		transform: translate(-50%);
+  &__avatar {
+    position: absolute;
+    left: -8%;
+    top: 10px;
+    transform: translate(-50%);
 
-		&--user {
-			display: none;
-		}
-	}
+    &--user {
+      display: none;
+    }
+  }
 
-	&__text {
-		font-weight: 400;
-		font-size: 14px;
-		line-height: 24px;
+  &__text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
 
-		word-break: break-word;
-		margin: 4px 0 4px 0;
-		padding: 8px 16px;
-		position: relative;
-		min-height: 32px;
-		box-sizing: border-box;
-		display: inline-flex;
-		align-items: flex-start;
-		flex-direction: column;
-		border-radius: 0 8px 8px;
-		max-width: max-content;
+    word-break: break-word;
+    margin: 4px 0 4px 0;
+    padding: 8px 16px;
+    position: relative;
+    min-height: 32px;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: flex-start;
+    flex-direction: column;
+    border-radius: 0 8px 8px;
+    max-width: max-content;
 
-		&--user {
-			align-self: flex-end;
-			background-color: rgb(85, 85, 85);
-			color: white;
-			margin-left: 0;
-		}
+    &--user {
+      align-self: flex-end;
+      background-color: rgb(85, 85, 85);
+      color: white;
+      margin-left: 0;
+    }
 
-		&--support {
-			color: rgb(66, 91, 118);
-			background-color: rgb(234, 240, 246);
-		}
-	}
+    &--support {
+      color: rgb(66, 91, 118);
+      background-color: rgb(234, 240, 246);
+    }
+  }
 
-	&__time {
-		margin: 0;
-		font-size: 12px;
-		line-height: 18px;
-		color: rgb(66, 91, 118);
+  &__time {
+    margin: 0;
+    font-size: 12px;
+    line-height: 18px;
+    color: rgb(66, 91, 118);
 
-		&--user {
-			align-self: flex-end;
-		}
+    &--user {
+      align-self: flex-end;
+    }
 
-		&--support {
+    &--support {
 
-		}
-	}
+    }
+  }
 
-	&__dots {
-		position: relative;
+  &__dots {
+    position: relative;
 
-		@include mixins.dot;
+    @include mixins.dot;
 
-		animation: dot-flashing 1s infinite linear alternate;
-		animation-delay: .5s;
+    animation: dot-flashing 1s infinite linear alternate;
+    animation-delay: .5s;
 
-		&::before,
-		&::after {
-			content: "";
-			display: inline-block;
-			position: absolute;
-			top: 0;
-		}
+    &::before,
+    &::after {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      top: 0;
+    }
 
-		&::before {
-			left: - variables.$dot-spacing;
+    &::before {
+      left: - variables.$dot-spacing;
 
-			@include mixins.dot($bg-color: variables.$dot-before-color);
+      @include mixins.dot($bg-color: variables.$dot-before-color);
 
-			animation: dot-flashing 1s infinite alternate;
-			animation-delay: 0s;
-		}
+      animation: dot-flashing 1s infinite alternate;
+      animation-delay: 0s;
+    }
 
-		&::after {
-			left: variables.$dot-spacing;
+    &::after {
+      left: variables.$dot-spacing;
 
-			@include mixins.dot($bg-color: variables.$dot-after-color);
+      @include mixins.dot($bg-color: variables.$dot-after-color);
 
-			animation: dot-flashing 1s infinite alternate;
-			animation-delay: 1s;
-		}
-	}
+      animation: dot-flashing 1s infinite alternate;
+      animation-delay: 1s;
+    }
+  }
 
-	&__dots-box {
-		padding: 12px 32px;
-	}
+  &__dots-box {
+    padding: 12px 32px;
+  }
 
 
-	&--first {
-		margin-top: 20px;
-	}
+  &--first {
+    margin-top: 20px;
+  }
 
-	&--first &__name,
-	&--first &__time {
-		display: none;
-	}
+  &--first &__name,
+  &--first &__time {
+    display: none;
+  }
 
-	&--first &__avatar {
-		left: -8%;
-		top: -15px;
-	}
+  &--first &__avatar {
+    left: -8%;
+    top: -15px;
+  }
 }
 
 @keyframes dot-flashing {
-	0% {
-		background-color: rgba(variables.$dot-color, 1);
-	}
+  0% {
+    background-color: rgba(variables.$dot-color, 1);
+  }
 
-	50%,
-	100% {
-		background-color: rgba(variables.$dot-color, .2);
-	}
+  50%,
+  100% {
+    background-color: rgba(variables.$dot-color, .2);
+  }
 }
 
 // Message Field Input
 .message-field {
-	display: flex;
-	align-items: center;
-	padding: 8px 8px 0 8px;
-	margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  padding: 8px 8px 0 8px;
+  margin-bottom: 8px;
 
-	&__text {
-		border-radius: 3px;
-		font-size: 16px;
-		line-height: 22px;
-		min-height: 38px;
-		max-height: 100px;
-		overflow: hidden auto;
-		padding: 8px;
-		position: relative;
-		width: 100%;
-		flex-basis: 100%;
-		word-break: break-word;
-		cursor: text;
-		border: none;
-		background-color: transparent;
-		color: rgb(114, 162, 208);
+  &__text {
+    border-radius: 3px;
+    font-size: 16px;
+    line-height: 22px;
+    min-height: 38px;
+    max-height: 100px;
+    overflow: hidden auto;
+    padding: 8px;
+    position: relative;
+    width: 100%;
+    flex-basis: 100%;
+    word-break: break-word;
+    cursor: text;
+    border: none;
+    background-color: transparent;
+    color: rgb(114, 162, 208);
 
-		&::placeholder {
-			color: rgb(123, 152, 182)
-		}
+    &::placeholder {
+      color: rgb(123, 152, 182)
+    }
 
-		&:focus {
-			outline: none;
-		}
-	}
+    &:focus {
+      outline: none;
+    }
+  }
 
-	&__button {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 40px;
-		height: 40px;
-		background: transparent;
-		border: none;
-		outline: none;
-		cursor: pointer;
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
 
-		&:disabled {
-			cursor: not-allowed;
-		}
-	}
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
 
-	&__button-icon {
-		width: 18px;
-		height: 18px;
-	}
+  &__button-icon {
+    width: 18px;
+    height: 18px;
+  }
 }

@@ -1,10 +1,10 @@
-import './Chat.scss';
-import { useState } from 'react'
-import { toggleModal } from '../../utils/toggleModal.js'
-import { ChatButton } from './ui/ChatButton/index.js'
-import { ChatModal } from './ui/ChatModal/index.js'
+import "./Chat.scss";
+import { useState } from "react";
+import { toggleModal } from "../../utils/toggleModal.js";
+import { ChatButton } from "./ui/ChatButton/index.js";
+import { ChatModal } from "./ui/ChatModal/index.js";
 export const Chat = () => {
-	const [isShowModal, setIsShowModal] = useState(false)
+	const [isShowModal, setIsShowModal] = useState(false);
 
 	const handleToggleModal = () => toggleModal(isShowModal, setIsShowModal);
 
@@ -15,4 +15,3 @@ export const Chat = () => {
 		</div>
 	);
 };
-
