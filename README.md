@@ -1,33 +1,33 @@
-# Спливаюче Вікно Чату
+#Chat Popup
 
-Цей проект реалізує спливаюче вікно чату, яке можна інтегрувати на будь-яку HTML-сторінку без шкоди для її функціональності і зовнішнього вигляду. Він розроблений з використанням React, JavaScript, SCSS і BIOM (Hooks).
+This project implements a pop-up chat window that can be integrated into any HTML page without compromising its functionality and appearance. It was developed using React, JavaScript, SCSS, and BIOM (Hooks).
 
-## Функціональні можливості
+## Features.
 
-1. **Згорнутий стан**: Вікно чату у згорнутому стані виглядає як кнопка, яка завжди фіксована з правого боку браузера і розміщена над контентом сторінки.
-2. **Відкриття чату**: При натисканні на кнопку вікно чату відкривається з анімацією. Вікно має можливість знову перейти у згорнутий стан.
-3. **Привітання**: Після анімації з'являється бабл з привітанням.
-4. **Запитання**: Далі з'являється бабл із запитанням: "Чим я вам можу допомогти?".
-5. **Варіанти відповідей**: З'являються варіанти питань у вигляді окремих баблів:
-   - "Який сьогодні день?"
-   - "Яка зараз година?"
-   - "Скільки днів до Нового Року?"
-   - "Своє питання"
-6. **Відповіді на питання**: Якщо користувач вибирає один з варіантів 1-3, чат автоматично формує відповідь. Перед відображенням відповіді є анімація "Typing...".
-7. **Своє питання**: Якщо користувач вибирає варіант "Своє питання", з'являється поле вводу.
-8. **Введення тексту**: У поле вводу користувач може ввести свій текст і відправити його на сервер (метод POST). Обробка на сервері не є обов'язковою, достатньо простої відправки.
-9. **Вдячність**: Після відправки чату з'являється бабл із подякою.
+1. **Minimized state**: When minimized, the chat window looks like a button that is always fixed on the right side of the browser and placed above the page content.
+2. **Open chat**: When you click on the button, the chat window opens with an animation. The window can be minimized again.
+3. **Greeting**: A bubble with a greeting appears after the animation.
+4. **Question**: A bubble with a question appears next: "How can I help you?".
+5. **Answers**: Options for questions appear as separate bubbles:
+   - "What day is it?"
+   - "What time is it?"
+   - "How many days until the New Year?"
+   - "Your own question"
+6. **Answers to questions**: If the user chooses one of the options 1-3, the chat automatically generates an answer. The "Typing..." animation appears before the answer is displayed.
+7. **Add my own question**: If the user selects the "My question" option, an input field appears.
+8. **Enter text**: In the input field, the user can enter their text and send it to the server (POST method). Processing on the server is not necessary, just sending it is enough.
+9. **Acknowledgment**: After sending a chat, a bubble appears with a thank you message.
 
-## Технології
-- **React**: Для створення інтерфейсу.
-- **JavaScript**: Для функціональної логіки.
-- **SCSS**: Для стилізації.
-- **Hooks**: Для управління станом і побічними ефектами.
+## Technology.
+- **React**: To create an interface.
+- JavaScript: For functional logic.
+- SCSS: For styling.
+- Hooks: For managing state and side effects.
 
-## Як запустити проект
-1. **Клонувати репозиторій**:
+## How to start a project
+1. **Clone the repository**:
 
-   ```bash
+   ## bash
    git clone https://github.com/julwer1k/react-chat-widget.git
 
    npm install
