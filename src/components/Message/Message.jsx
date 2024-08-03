@@ -1,9 +1,9 @@
-import "./MessageContent.scss";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { getSupportMessage } from "../../utils/getSupportMessage.js";
 import { AnswerBlock } from "../AnswerBlock/index.js";
 import { Loader } from "../Loader/Loader.jsx";
 import { MessageBlock } from "../MessageBlock/index.js";
+import "./Message.scss";
 
 const ANSWERS = [
   { id: 0, text: "Який сьогодні день?" },

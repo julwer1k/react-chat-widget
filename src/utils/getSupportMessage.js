@@ -1,4 +1,4 @@
-import { IMG_URL } from "../components/Message/MessageBlock/index.js";
+import { IMG_URL } from "../components/Message/index.js";
 
 const DAYS_OF_WEEK = [
   "Неділя",
