@@ -1,4 +1,4 @@
-#Chat Popup
+# Chat Popup
 
 This project implements a pop-up chat window that can be integrated into any HTML page without compromising its functionality and appearance. It was developed using React, JavaScript, SCSS, and BIOM (Hooks).
 
