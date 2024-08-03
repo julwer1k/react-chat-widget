@@ -1,6 +1,6 @@
-import './ChatButton.scss'
+import "./ChatButton.scss";
 
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
 export const ChatButton = ({ handleFunction }) => {
   return (
@@ -17,9 +17,9 @@ export const ChatButton = ({ handleFunction }) => {
         <rect fill="none" height="256" width="256" />
       </svg>
     </button>
-  )
-}
+  );
+};
 
 ChatButton.propTypes = {
   handleFunction: PropTypes.func.isRequired,
-}
+};

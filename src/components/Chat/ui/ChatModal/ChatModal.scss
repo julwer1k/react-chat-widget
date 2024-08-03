@@ -52,6 +52,7 @@
     width: 40px;
     height: 40px;
     transition: background-color 0.25s ease-in-out 0s;
+    cursor: not-allowed;
 
     &:hover {
       background-color: rgba(255, 255, 255, 0.1);
@@ -60,14 +61,15 @@
 
   &__arrow {
     background-color: white;
-    -webkit-mask-image: url("../../../../assets/chat/chat-modal-arrow.svg");
-    mask-image: url("../../../../assets/chat/chat-modal-arrow.svg");
+    -webkit-mask-image: url(../../../../assets/chat-modal-arrow.svg);
+    mask-image: url(../../../../assets/chat-modal-arrow.svg);
     vertical-align: middle;
     color: white;
     border: none;
     padding: 0;
     width: 20px;
     height: 20px;
+    cursor: not-allowed;
 
     outline: none;
   }

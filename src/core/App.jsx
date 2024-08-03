@@ -1,5 +1,5 @@
-import './App.scss'
-import { Chat } from '../components/Chat/index.js'
+import "./App.scss";
+import { Chat } from "../components/Chat/index.js";
 
 export const App = () => {
   return (
@@ -51,5 +51,5 @@ export const App = () => {
         </address>
       </footer>
     </div>
-  )
-}
+  );
+};
