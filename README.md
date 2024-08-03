@@ -27,7 +27,7 @@ This project implements a pop-up chat window that can be integrated into any HTM
 ## How to start a project
 1. **Clone the repository**:
 
-   ## bash
+   ```bash
    git clone https://github.com/julwer1k/react-chat-widget.git
 
    npm install
